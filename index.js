@@ -374,10 +374,10 @@ export const processPayment = async () => {
   }
 
   const superprofileLinks = {
-    "TRIAL RECOVERY": "https://superprofile.bio/bookings/mindetmanifeststore?sessionId=69f891b9f9d5cf0013bc6fa6",
-    "RECOVERY": "https://superprofile.bio/bookings/mindetmanifeststore?sessionId=69f891b9f9d5cf0013bc6fab",
-    "STUDENT RECOVERY": "https://superprofile.bio/bookings/mindetmanifeststore?sessionId=69f891b9f9d5cf0013bc6fb0",
-    "CAREER COUNSELLING": "https://superprofile.bio/bookings/mindetmanifeststore?sessionId=69f8ea569642ca0013826a33"
+    "TRIAL RECOVERY": "https://superprofile.bio/bookings/emotcare?sessionId=69f891b9f9d5cf0013bc6fa6",
+    "RECOVERY": "https://superprofile.bio/bookings/emotcare?sessionId=69f891b9f9d5cf0013bc6fab",
+    "STUDENT RECOVERY": "https://superprofile.bio/bookings/emotcare?sessionId=69f891b9f9d5cf0013bc6fb0",
+    "CAREER COUNSELLING": "https://superprofile.bio/bookings/emotcare?sessionId=69f8ea569642ca0013826a33"
   };
 
   const redirectUrl = superprofileLinks[planName];
