@@ -89,7 +89,7 @@ export const loginWithGoogle = async () => {
     console.log("User:", result.user);
     // You can redirect to dashboard here on success
     
-    showPage('dashboard');
+    window.showPage('dashboard');
   } catch (error) {
     console.error(error);
     alert('Error logging in with Google: ' + error.message);
@@ -128,6 +128,103 @@ export const logoutUser = async () => {
 
 let currentProfile = null; // Store it globally
 
+const PLAN_DETAILS = {
+  "TRIAL RECOVERY": {
+    price: "Rs. 49 / 7 days",
+    benefits: "1 counselling session, 7 days chat support, and one extra 10 minute session."
+  },
+  "RECOVERY": {
+    price: "Rs. 99 / 28 days",
+    benefits: "2 counselling sessions, music therapy, 28 days chat support, and one extra 10 minute session."
+  },
+  "STUDENT RECOVERY": {
+    price: "Rs. 199 / month",
+    benefits: "4 counselling sessions, music therapy, video guidance, 24/7 chat support, and one extra 20 minute session."
+  },
+  "CAREER COUNSELLING": {
+    price: "Rs. 249 / 30 days",
+    benefits: "3 one-hour counselling sessions, career trial resources, 30 days chat support, and one extra 20 minute session."
+  }
+};
+
+function getProfilePlan(profile) {
+  const planName = profile?.plan_purchased;
+  return PLAN_DETAILS[planName] ? planName : null;
+}
+
+function formatPlanDate(value) {
+  if (!value) return "No renewal date";
+
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return "No renewal date";
+
+  return `Renews on ${date.toLocaleDateString("en-IN", {
+    day: "numeric",
+    month: "short",
+    year: "numeric"
+  })}`;
+}
+
+function setPlanStatus(status) {
+  const statusEl = document.getElementById('dash-plan-status');
+  if (!statusEl) return;
+
+  const normalized = status || 'inactive';
+  const isActive = normalized === 'active';
+  statusEl.textContent = isActive ? 'Active' : normalized.replace(/_/g, ' ');
+  statusEl.style.background = isActive ? 'rgba(110,231,183,0.1)' : 'rgba(255,255,255,0.08)';
+  statusEl.style.color = isActive ? 'var(--mint)' : 'var(--text-muted)';
+}
+
+function updateDashboardProfile(profile) {
+  if (!profile) return;
+
+  const nameEl = document.getElementById('dash-name');
+  const universityEl = document.getElementById('dash-university');
+  if (nameEl) nameEl.textContent = ', ' + (profile.name || 'Student');
+  if (universityEl) universityEl.textContent = profile.university || 'University not set';
+
+  const planName = getProfilePlan(profile);
+  const status = profile.subscription_status || (planName ? 'active' : 'inactive');
+  const details = planName ? PLAN_DETAILS[planName] : null;
+
+  const planEl = document.getElementById('dash-plan');
+  const priceEl = document.getElementById('dash-plan-price');
+  const renewalEl = document.getElementById('dash-plan-renewal');
+  const benefitsEl = document.getElementById('dash-plan-benefits');
+
+  if (planEl) planEl.textContent = planName || 'No Plan Selected';
+  if (priceEl) priceEl.textContent = details?.price || 'Choose a plan to begin';
+  if (renewalEl) renewalEl.textContent = planName ? formatPlanDate(profile.current_period_end) : 'No renewal date';
+  if (benefitsEl) benefitsEl.textContent = details?.benefits || 'Your plan benefits will appear here after purchase.';
+  setPlanStatus(status);
+}
+
+async function fetchProfileFromDatabase(userId) {
+  const { data: profile, error } = await supabase
+    .from('profiles')
+    .select('*')
+    .eq('id', userId)
+    .single();
+
+  if (error) throw error;
+  return profile;
+}
+
+export const refreshProfileFromDatabase = async () => {
+  const user = auth.currentUser;
+  if (!user) return;
+
+  try {
+    const profile = await fetchProfileFromDatabase(user.uid);
+    currentProfile = profile;
+    updateDashboardProfile(profile);
+  } catch (error) {
+    console.error("Error refreshing profile:", error);
+    alert("Could not refresh your profile. Please try again.");
+  }
+};
+
 // Listen for auth state changes to persist login
 onAuthStateChanged(auth, async (user) => {
   if (user) {
@@ -138,11 +235,14 @@ onAuthStateChanged(auth, async (user) => {
     if (document.getElementById('nav-profile-li')) document.getElementById('nav-profile-li').style.display = 'block';
     
     // Fetch profile from Supabase
-    let { data: profile, error } = await supabase
-      .from('profiles')
-      .select('*')
-      .eq('id', user.uid)
-      .single();
+    let profile = null;
+    let error = null;
+
+    try {
+      profile = await fetchProfileFromDatabase(user.uid);
+    } catch (profileError) {
+      error = profileError;
+    }
       
     // If no profile exists, create one with default values
     if (!profile) {
@@ -152,7 +252,8 @@ onAuthStateChanged(auth, async (user) => {
         email: user.email,
         phone: user.phoneNumber || '',
         university: 'University not set',
-        plan_purchased: 'Free Plan'
+        plan_purchased: null,
+        subscription_status: 'inactive'
       };
       
       const { data: createdProfile, error: createError } = await supabase
@@ -168,14 +269,15 @@ onAuthStateChanged(auth, async (user) => {
       }
     }
     
+    if (!profile) {
+      console.error("Profile could not be loaded or created.", error);
+      alert("Could not load your profile. Please refresh and try again.");
+      return;
+    }
+
     currentProfile = profile; // Save to global variable
     
-    // Update Dashboard UI
-    if (profile) {
-      document.getElementById('dash-name').textContent = ', ' + profile.name;
-      document.getElementById('dash-university').textContent = profile.university;
-      document.getElementById('dash-plan').textContent = profile.plan_purchased;
-    }
+    updateDashboardProfile(profile);
     
     // Redirect logic: If profile is incomplete, go to onboarding. Else dashboard.
     if (typeof window.showPage === 'function') {
@@ -265,71 +367,26 @@ export const processPayment = async () => {
     return;
   }
   
-  const planName = document.getElementById('pay-plan-name').textContent;
-  const amountText = document.getElementById('pay-btn-total').textContent;
-  const amount = parseInt(amountText);
-  
-  const customerName = document.getElementById('pay-input-name')?.value || (currentProfile ? currentProfile.name : 'Student');
-  const customerEmail = document.getElementById('pay-input-email')?.value || user.email;
-  const customerPhone = document.getElementById('pay-input-phone')?.value || (currentProfile ? currentProfile.phone : '');
-
-  const options = {
-    "key": "t5eq85Q4O5Gbtzm4CSodA5QS", // Replace with your actual Razorpay Key
-    "amount": amount * 100, // Amount is dynamic for all plans
-    "currency": "INR",
-    "name": "EMOT CARE",
-    "description": "Purchase " + planName,
-    "handler": async function (response) {
-      const transactionId = response.razorpay_payment_id || 'TXN_' + Math.floor(Math.random() * 100000000);
-
-      // Insert payment record in Supabase
-      const { error: paymentError } = await supabase.from('payments').insert([{
-        user_id: user.uid,
-        plan_name: planName,
-        amount: amount,
-        status: 'completed',
-        transaction_id: transactionId
-      }]);
-      
-      if (paymentError) console.error("Payment logging failed:", paymentError);
-      
-      // Update user profile with the new plan
-      const { error: profileError } = await supabase.from('profiles').update({
-        plan_purchased: planName
-      }).eq('id', user.uid);
-      
-      if (profileError) {
-        console.error("Profile plan update failed:", profileError);
-      } else {
-        if (currentProfile) currentProfile.plan_purchased = planName;
-        const dashPlanEl = document.getElementById('dash-plan');
-        if (dashPlanEl) dashPlanEl.textContent = planName;
-      }
-      
-      if (typeof window.showSuccess === 'function') window.showSuccess();
-    },
-    "prefill": {
-      "name": customerName,
-      "email": customerEmail,
-      "contact": customerPhone
-    },
-    "theme": {
-      "color": "#6C63FF" // Emot Care Violet
-    }
-  };
-  
-  if (!window.Razorpay) {
-    alert("Razorpay SDK not loaded. Please check your connection.");
+  const planName = document.getElementById('pay-plan-name')?.textContent?.trim();
+  if (!planName) {
+    alert("Invalid plan selected. Please try again.");
     return;
   }
-  
-  const rzp1 = new window.Razorpay(options);
-  
-  rzp1.on('payment.failed', function (response){
-    alert("Payment failed: " + response.error.description);
-  });
-  
-  rzp1.open();
+
+  const superprofileLinks = {
+    "TRIAL RECOVERY": "https://superprofile.bio/bookings/mindetmanifeststore?sessionId=69f891b9f9d5cf0013bc6fa6",
+    "RECOVERY": "https://superprofile.bio/bookings/mindetmanifeststore?sessionId=69f891b9f9d5cf0013bc6fab",
+    "STUDENT RECOVERY": "https://superprofile.bio/bookings/mindetmanifeststore?sessionId=69f891b9f9d5cf0013bc6fb0",
+    "CAREER COUNSELLING": "https://superprofile.bio/bookings/mindetmanifeststore?sessionId=69f8ea569642ca0013826a33"
+  };
+
+  const redirectUrl = superprofileLinks[planName];
+  if (!redirectUrl) {
+    alert("Invalid plan selected. Please try again.");
+    return;
+  }
+
+  window.location.href = redirectUrl;
 };
 
 // Make it available globally for the HTML onclick attribute
@@ -339,3 +396,4 @@ window.logoutUser = logoutUser;
 window.saveOnboarding = saveOnboarding;
 window.openEditProfile = openEditProfile;
 window.processPayment = processPayment;
+window.refreshProfileFromDatabase = refreshProfileFromDatabase;

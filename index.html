@@ -8,7 +8,6 @@
     }
   }
 </script>
-<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap');
@@ -488,7 +487,6 @@
     <li><a href="#" onclick="showPage('home')" id="nav-home" class="active">Home</a></li>
     <li><a href="#" onclick="showPage('plans')" id="nav-plans">Plans</a></li>
     <li><a href="#" onclick="showPage('about')" id="nav-about">About</a></li>
-    <li><a href="#" onclick="showPage('contact')" id="nav-contact">Contact</a></li>
     <li><a href="#" onclick="showPage('legal')" id="nav-legal">Legal</a></li>
     <li><a href="#" onclick="showPage('login')" id="nav-login">Login</a></li>
     <li id="nav-profile-li" style="display: none;"><a href="#" onclick="showPage('dashboard')" id="nav-profile" style="display: flex; align-items: center; gap: 6px;">
@@ -517,7 +515,7 @@
       <span class="gradient-text">every feeling.</span>
     </h1>
     <p class="hero-sub">
-      The world's first emotion-based support platform. Not just money — real care, real guidance, real community for every life situation.
+      The India's students first emotion-based support platform. Not just money — real care, real guidance, real community for every life situation.
     </p>
     <div class="hero-actions">
       <button class="btn-primary" onclick="showPage('plans')">View Plans →</button>
@@ -568,30 +566,30 @@
     <p class="section-sub">Emotion-based plans designed for students and youth — not traditional insurance.</p>
     <div class="plans-grid" style="margin-top:40px">
       <div class="plan-card" onclick="showPage('plans')">
-        <div class="plan-icon">💙</div>
-        <div class="plan-name">Emotional Support</div>
-        <div class="plan-desc">Counselling, career guidance & emergency funds for everyday emotional needs.</div>
-        <div class="plan-price"><span class="price-amount">₹299</span><span class="price-period">/month</span></div>
+        <div class="plan-icon">🩹</div>
+        <div class="plan-name">TRIAL RECOVERY</div>
+        <div class="plan-desc">1 Counselling session, Chat support (7 days) 24/7 & Extra session.</div>
+        <div class="plan-price"><span class="price-amount">₹49</span><span class="price-period">/7 days</span></div>
         <button class="plan-cta">Learn More</button>
       </div>
       <div class="plan-card featured" onclick="showPage('plans')">
         <div class="plan-badge">Most Popular</div>
-        <div class="plan-icon">📚</div>
-        <div class="plan-name">Student Stress Plan</div>
-        <div class="plan-desc">Study guidance, counselling sessions & an emergency helpline for exam stress.</div>
+        <div class="plan-icon">🎓</div>
+        <div class="plan-name">STUDENT RECOVERY</div>
+        <div class="plan-desc">4 Sessions, Music & Video therapy, 24/7 Chat & Extra session.</div>
         <div class="plan-price"><span class="price-amount">₹199</span><span class="price-period">/month</span></div>
         <button class="plan-cta">Learn More</button>
       </div>
       <div class="plan-card" onclick="showPage('plans')">
         <div class="plan-icon">🌱</div>
-        <div class="plan-name">Exam Failure Support</div>
-        <div class="plan-desc">Mentorship, career redirection and motivation sessions to rise again.</div>
-        <div class="plan-price"><span class="price-amount">₹249</span><span class="price-period">/month</span></div>
+        <div class="plan-name">RECOVERY</div>
+        <div class="plan-desc">2 Sessions, Music therapy, 24/7 Chat support & Extra session.</div>
+        <div class="plan-price"><span class="price-amount">₹99</span><span class="price-period">/28 days</span></div>
         <button class="plan-cta">Learn More</button>
       </div>
     </div>
     <div style="text-align:center;margin-top:28px">
-      <button class="btn-primary" onclick="showPage('plans')">See All 5 Plans →</button>
+      <button class="btn-primary" onclick="showPage('plans')">See All 4 Plans →</button>
     </div>
   </div>
 
@@ -671,75 +669,60 @@
     <div class="plans-grid">
 
       <div class="plan-card">
-        <div class="plan-icon">💙</div>
-        <div class="plan-name">Emotional Support Membership</div>
-        <div class="plan-desc">For anyone navigating the emotional ups and downs of student life. Foundational care for your mind.</div>
+        <div class="plan-icon">🩹</div>
+        <div class="plan-name">TRIAL RECOVERY</div>
+        <div class="plan-desc">Perfect for a quick start. Experience our support system for 7 days.</div>
         <ul class="plan-features">
-          <li><span class="check-icon">✓</span>2 counselling sessions/month</li>
-          <li><span class="check-icon">✓</span>Career guidance check-ins</li>
-          <li><span class="check-icon">✓</span>Emergency small fund access</li>
-          <li><span class="check-icon">✓</span>Resource library access</li>
+          <li><span class="check-icon">✓</span>1 Counselling session (30 min)</li>
+          <li><span class="check-icon">✓</span>Chat support (7 days) 24/7</li>
+          <li><span class="check-icon">✓</span>Extra counselling session (10 min)</li>
         </ul>
-        <div class="plan-price"><span class="price-amount">₹299</span><span class="price-period">/month</span></div>
-        <button class="plan-cta" onclick="showPayment('Emotional Support Membership','299')">Choose Plan</button>
-      </div>
-
-      <div class="plan-card featured">
-        <div class="plan-badge">Most Popular</div>
-        <div class="plan-icon">📚</div>
-        <div class="plan-name">Student Stress Plan</div>
-        <div class="plan-desc">Designed for exam pressures, academic burnout and the stress of student life. Your study-time shield.</div>
-        <ul class="plan-features">
-          <li><span class="check-icon">✓</span>2–3 counselling sessions/month</li>
-          <li><span class="check-icon">✓</span>Study guidance & planning</li>
-          <li><span class="check-icon">✓</span>24/7 emergency helpline</li>
-          <li><span class="check-icon">✓</span>Peer community access</li>
-          <li><span class="check-icon">✓</span>Academic mentor pairing</li>
-        </ul>
-        <div class="plan-price"><span class="price-amount">₹199</span><span class="price-period">/month</span></div>
-        <button class="plan-cta" onclick="showPayment('Student Stress Plan','199')">Choose Plan</button>
+        <div class="plan-price"><span class="price-amount">₹49</span><span class="price-period">/7 days</span></div>
+        <button class="plan-cta" onclick="showPayment('TRIAL RECOVERY','49')">Choose Plan</button>
       </div>
 
       <div class="plan-card">
         <div class="plan-icon">🌱</div>
-        <div class="plan-name">Exam Failure Support</div>
-        <div class="plan-desc">When results don't go as planned — we help you regroup, redirect, and restart with purpose.</div>
+        <div class="plan-name">RECOVERY</div>
+        <div class="plan-desc">A month of dedicated recovery and support for your emotional well-being.</div>
         <ul class="plan-features">
-          <li><span class="check-icon">✓</span>1:1 mentorship sessions</li>
-          <li><span class="check-icon">✓</span>Career redirection advice</li>
-          <li><span class="check-icon">✓</span>Weekly motivation sessions</li>
-          <li><span class="check-icon">✓</span>Resilience coaching</li>
+          <li><span class="check-icon">✓</span>2 Counselling sessions (30min+30min)</li>
+          <li><span class="check-icon">✓</span>Music therapy (30min x 4 sessions)</li>
+          <li><span class="check-icon">✓</span>Chat support (28 days) 24/7</li>
+          <li><span class="check-icon">✓</span>Extra counselling session (10 min)</li>
         </ul>
-        <div class="plan-price"><span class="price-amount">₹249</span><span class="price-period">/month</span></div>
-        <button class="plan-cta" onclick="showPayment('Exam Failure Support','249')">Choose Plan</button>
+        <div class="plan-price"><span class="price-amount">₹99</span><span class="price-period">/28 days</span></div>
+        <button class="plan-cta" onclick="showPayment('RECOVERY','99')">Choose Plan</button>
       </div>
 
-      <div class="plan-card">
-        <div class="plan-icon">💔</div>
-        <div class="plan-name">Break-Up Recovery Plan</div>
-        <div class="plan-desc">Heartbreak hits hard. This plan helps you process, heal, and become your best self again.</div>
+      <div class="plan-card featured">
+        <div class="plan-badge">Most Popular</div>
+        <div class="plan-icon">🎓</div>
+        <div class="plan-name">STUDENT RECOVERY</div>
+        <div class="plan-desc">Comprehensive support tailored for students navigating academic and life stress.</div>
         <ul class="plan-features">
-          <li><span class="check-icon">✓</span>Emotional counselling sessions</li>
-          <li><span class="check-icon">✓</span>Fitness & self-improvement guide</li>
-          <li><span class="check-icon">✓</span>Community support group</li>
-          <li><span class="check-icon">✓</span>Journaling & mindfulness tools</li>
+          <li><span class="check-icon">✓</span>4 Counselling sessions (30 min x 4)</li>
+          <li><span class="check-icon">✓</span>Music therapy (30 min x 8)</li>
+          <li><span class="check-icon">✓</span>Video guidance (30 min x 8)</li>
+          <li><span class="check-icon">✓</span>Chat support (28 days) 24/7</li>
+          <li><span class="check-icon">✓</span>Extra counselling session (20 min)</li>
         </ul>
-        <div class="plan-price"><span class="price-amount">₹179</span><span class="price-period">/month</span></div>
-        <button class="plan-cta" onclick="showPayment('Break-Up Recovery Plan','179')">Choose Plan</button>
+        <div class="plan-price"><span class="price-amount">₹199</span><span class="price-period">/month</span></div>
+        <button class="plan-cta" onclick="showPayment('STUDENT RECOVERY','199')">Choose Plan</button>
       </div>
 
       <div class="plan-card">
         <div class="plan-icon">🚀</div>
-        <div class="plan-name">Jobless & Loss Support</div>
-        <div class="plan-desc">Lost a job or facing a career gap? We'll help you rebuild with practical tools and emotional strength.</div>
+        <div class="plan-name">CAREER COUNSELLING</div>
+        <div class="plan-desc">Focused career guidance and trials to help you find your professional path.</div>
         <ul class="plan-features">
-          <li><span class="check-icon">✓</span>Resume building assistance</li>
-          <li><span class="check-icon">✓</span>Mock interview training</li>
-          <li><span class="check-icon">✓</span>Emotional counselling</li>
-          <li><span class="check-icon">✓</span>Small financial support (coming soon)</li>
+          <li><span class="check-icon">✓</span>3 Counselling sessions (1 hr each)</li>
+          <li><span class="check-icon">✓</span>Career trials (PDF resources)</li>
+          <li><span class="check-icon">✓</span>Chat support (30 days) 24/7</li>
+          <li><span class="check-icon">✓</span>Extra counselling session (20 min)</li>
         </ul>
-        <div class="plan-price"><span class="price-amount">₹349</span><span class="price-period">/month</span></div>
-        <button class="plan-cta" onclick="showPayment('Jobless & Loss Support','349')">Choose Plan</button>
+        <div class="plan-price"><span class="price-amount">₹249</span><span class="price-period">/30 days</span></div>
+        <button class="plan-cta" onclick="showPayment('CAREER COUNSELLING','249')">Choose Plan</button>
       </div>
 
     </div>
@@ -752,7 +735,7 @@
     <div class="payment-wrapper">
       <div class="pay-summary">
         <h3>Order Summary</h3>
-        <div class="summary-plan-name" id="pay-plan-name">Student Stress Plan</div>
+        <div class="summary-plan-name" id="pay-plan-name">Student Recovery</div>
         <div class="summary-price">₹<span id="pay-plan-price">199</span><span style="font-size:16px;color:var(--text-muted)">/month</span></div>
         <hr class="summary-divider">
         <div class="summary-feature"><span>✓</span> 2–3 Counselling sessions/month</div>
@@ -760,18 +743,15 @@
         <div class="summary-feature"><span>✓</span> Study guidance & planning</div>
         <div class="summary-feature"><span>✓</span> Peer community access</div>
         <hr class="summary-divider">
-        <div style="display:flex;justify-content:space-between;font-size:14px;color:var(--text-muted);margin-bottom:8px">
+        <div style="display:flex;justify-content:space-between;font-size:14px;color:var(--text-muted);margin-bottom:16px">
           <span>Subtotal</span><span>₹<span id="pay-sub">199</span></span>
         </div>
-        <div style="display:flex;justify-content:space-between;font-size:14px;color:var(--text-muted);margin-bottom:16px">
-          <span>GST (18%)</span><span>₹<span id="pay-gst">36</span></span>
-        </div>
         <div style="display:flex;justify-content:space-between;font-weight:700;font-size:16px">
-          <span>Total</span><span style="color:var(--lavender)">₹<span id="pay-total">235</span></span>
+          <span>Total</span><span style="color:var(--lavender)">₹<span id="pay-total">199</span></span>
         </div>
         <div class="trust-row" style="margin-top:20px">
           <div class="trust-badge">🔒 SSL Secured</div>
-          <div class="trust-badge">✓ Razorpay</div>
+          <div class="trust-badge">✓ Secure Checkout</div>
           <div class="trust-badge">🛡 PCI DSS</div>
         </div>
       </div>
@@ -802,27 +782,9 @@
           </select>
         </div>
 
-        <div class="pay-methods">
-          <div class="pay-method-label">Payment Method</div>
-          <div class="pay-options">
-            <div class="pay-option selected" onclick="selectPay(this)">
-              <div class="pay-option-icon">📱</div>UPI
-            </div>
-            <div class="pay-option" onclick="selectPay(this)">
-              <div class="pay-option-icon">💳</div>Card
-            </div>
-            <div class="pay-option" onclick="selectPay(this)">
-              <div class="pay-option-icon">🏦</div>Net Banking
-            </div>
-          </div>
-        </div>
 
-        <div style="background:rgba(255,255,255,0.05);border:1px solid var(--glass-border);border-radius:12px;padding:16px;margin:16px 0">
-          <div style="font-size:12px;color:var(--text-muted);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.5px;font-weight:600">UPI ID</div>
-          <input id="pay-input-upi" class="form-input" placeholder="yourname@upi" type="text">
-        </div>
 
-        <button class="submit-btn" onclick="processPayment()">Pay ₹<span id="pay-btn-total">235</span> Securely →</button>
+        <button class="submit-btn" onclick="processPayment()">Pay ₹<span id="pay-btn-total">199</span> Securely →</button>
 
         <p style="text-align:center;font-size:11px;color:var(--text-muted);margin-top:14px">
           By proceeding, you agree to our Terms & Conditions and Privacy Policy. Refund available within 7 days.
@@ -831,21 +793,12 @@
     </div>
   </div>
 
-  <div id="payment-success-view" style="display:none">
-    <div class="success-screen">
-      <div class="success-icon">✓</div>
-      <h2>You're all set! 💙</h2>
-      <p>Your EMOT CARE plan is now active. Check your email for onboarding details and your first session booking link.</p>
-      <div style="background:var(--card-bg);border:1px solid var(--glass-border);border-radius:20px;padding:24px;max-width:400px;margin:0 auto 32px;text-align:left">
-        <div style="font-size:12px;color:var(--text-muted);margin-bottom:16px;text-transform:uppercase;letter-spacing:0.5px">What happens next</div>
-        <div class="summary-feature" style="padding:8px 0">📧 Confirmation email sent</div>
-        <div class="summary-feature" style="padding:8px 0">🤝 Counsellor matched within 24h</div>
-        <div class="summary-feature" style="padding:8px 0">📱 WhatsApp welcome message</div>
-        <div class="summary-feature" style="padding:8px 0">📅 First session scheduling link</div>
-      </div>
-      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
-        <button class="btn-primary" onclick="showPage('home')">Go to Home</button>
-        <button class="btn-outline" onclick="showPage('plans')">View All Plans</button>
+  <div id="payment-success-view" style="display: none;">
+    <div class="section" style="min-height: 60vh; display: flex; align-items: center; justify-content: center; text-align: center;">
+      <div class="pay-form" style="max-width: 520px;">
+        <div style="font-size: 48px; margin-bottom: 16px;">✓</div>
+        <h2 style="font-size: 28px; margin-bottom: 12px;">Payment Started</h2>
+        <p style="color: var(--text-muted); line-height: 1.7;">Complete payment on Superprofile. Your profile will update after the purchased plan is recorded in the database.</p>
       </div>
     </div>
   </div>
@@ -873,7 +826,7 @@
             </div>
           </div>
           <div class="value-item">
-            <div class="value-icon">🛡</div>
+            <div class="value-icon">🩹</div>
             <div>
               <div class="value-title">Emotional safety</div>
               <div class="value-desc">A safe, confidential space where no feeling is too small to matter.</div>
@@ -891,13 +844,11 @@
 
       <div>
         <div class="about-visual">
-          <div class="about-visual-icon">💙</div>
-          <div style="font-family:'Sora',sans-serif;font-size:22px;font-weight:700;margin-bottom:8px">EMOT CARE</div>
-          <div style="color:var(--text-muted);font-size:14px;font-style:italic">"Support for every feeling"</div>
+          <img src="EMOT CARE.png" alt="EMOT CARE Logo" style="width: 100%; height: 100%; object-fit: contain; border-radius: 20px;">
         </div>
         <div class="about-stat-grid">
           <div class="about-stat">
-            <div class="about-stat-num">5+</div>
+            <div class="about-stat-num">4</div>
             <div class="about-stat-label">Support plans</div>
           </div>
           <div class="about-stat">
@@ -909,7 +860,7 @@
             <div class="about-stat-label">Confidential</div>
           </div>
           <div class="about-stat">
-            <div class="about-stat-num">₹179</div>
+            <div class="about-stat-num">₹49</div>
             <div class="about-stat-label">Starting price</div>
           </div>
         </div>
@@ -918,41 +869,6 @@
   </div>
 </div>
 
-<!-- ══════════════ CONTACT ══════════════ -->
-<div id="page-contact" class="page">
-  <div class="section">
-    <div class="section-label">Get in touch</div>
-    <div class="section-title">We're here for you</div>
-    <p class="section-sub">Reach us on any channel. No query is too small — your feelings matter to us.</p>
-    <div class="contact-grid">
-      <div>
-        <div class="contact-card">
-          <div class="contact-method">
-            <div class="contact-method-icon email">📧</div>
-            <div>
-              <div class="contact-method-title">Email Support</div>
-              <div class="contact-method-sub">hello@emotcare.in</div>
-            </div>
-          </div>
-          <div class="contact-method">
-            <div class="contact-method-icon whatsapp">💬</div>
-            <div>
-              <div class="contact-method-title">WhatsApp</div>
-              <div class="contact-method-sub">+91 XXXXX XXXXX · Available 9AM–9PM</div>
-            </div>
-          </div>
-          <div class="contact-method">
-            <div class="contact-method-icon" style="background:rgba(251,113,133,0.2)">🆘</div>
-            <div>
-              <div class="contact-method-title">Emergency Helpline</div>
-              <div class="contact-method-sub">iCall: 9152987821 · Available 24/7</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- ══════════════ LEGAL ══════════════ -->
 <div id="page-legal" class="page">
@@ -997,7 +913,7 @@
       </div>
       <div class="legal-section">
         <h3>👤 Your Rights</h3>
-        <p>You have the right to access, correct, or delete your data at any time. Contact hello@emotcare.in for data requests. We will respond within 7 business days.</p>
+        <p>You have the right to access, correct, or delete your data at any time. Contact emotcare@gmail.com for data requests. We will respond within 7 business days.</p>
       </div>
     </div>
 
@@ -1018,7 +934,7 @@
           <p>After 7-day window. Sessions already used. Cancellation mid-month without prior notice.</p>
         </div>
       </div>
-      <div class="legal-highlight">To request a refund, email refunds@emotcare.in with your order ID. Refunds are processed within 5–7 business days.</div>
+      <div class="legal-highlight">To request a refund, email emotcare@gmail.com with your order ID. Refunds are processed within 5–7 business days.</div>
     </div>
   </div>
 </div>
@@ -1134,33 +1050,18 @@
       <!-- Left Column (Main Content) -->
       <div style="display: flex; flex-direction: column; gap: 24px;">
         
-        <!-- Next Session -->
-        <div class="plan-card" style="padding: 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; cursor: default;">
-          <div style="display: flex; align-items: center; gap: 16px;">
-            <div style="width: 56px; height: 56px; border-radius: 16px; background: linear-gradient(135deg, var(--violet), var(--lavender)); display: flex; align-items: center; justify-content: center; font-size: 24px;">🗓️</div>
-            <div>
-              <div style="font-size: 13px; color: var(--lavender); font-weight: 600; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px;">Session</div>
-              <div style="font-size: 18px; font-weight: 700;">Tomorrow, 4:00 PM</div>
-              <div style="font-size: 13px; color: var(--text-muted); margin-top: 2px;">with Dr. Aditi Sharma (Counsellor)</div>
-            </div>
-          </div>
-          <button class="btn-primary" style="padding: 12px 24px; font-size: 14px;">Join Video Call</button>
-        </div>
+
 
         <!-- My Plan & Benefits -->
         <div class="pay-summary" style="padding: 24px;">
           <h3 style="margin-bottom: 20px; font-size: 18px;">My Plan Benefits</h3>
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
-            <div style="background: rgba(255,255,255,0.04); border: 1px solid var(--glass-border); border-radius: 16px; padding: 16px;">
-              <div style="font-size: 20px; margin-bottom: 8px;">🎯</div>
-              <div style="font-size: 14px; font-weight: 600; margin-bottom: 4px;">Sessions Left</div>
-              <div style="font-size: 24px; font-weight: 700; color: var(--lavender);">2 <span style="font-size: 12px; color: var(--text-muted); font-weight: 400;">/ 3 this month</span></div>
-            </div>
+
             <div style="background: rgba(255,255,255,0.04); border: 1px solid var(--glass-border); border-radius: 16px; padding: 16px;">
               <div style="font-size: 20px; margin-bottom: 8px;">📚</div>
               <div style="font-size: 14px; font-weight: 600; margin-bottom: 4px;">Resource Library</div>
               <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;">Access study & stress guides</div>
-              <a href="#" style="color: var(--mint); font-size: 13px; text-decoration: none; font-weight: 600;">Browse Library →</a>
+              <a href="#" onclick="alert('Coming Soon!')" style="color: var(--mint); font-size: 13px; text-decoration: none; font-weight: 600;">Browse Library →</a>
             </div>
             <div style="background: rgba(255,255,255,0.04); border: 1px solid var(--glass-border); border-radius: 16px; padding: 16px;">
               <div style="font-size: 20px; margin-bottom: 8px;">🤝</div>
@@ -1179,11 +1080,16 @@
         <div class="pay-form" style="padding: 24px;">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
             <div style="font-size: 12px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px;">Current Plan</div>
-            <div style="background: rgba(110,231,183,0.1); color: var(--mint); font-size: 11px; padding: 4px 10px; border-radius: 20px; font-weight: 600;">Active</div>
+            <div id="dash-plan-status" style="background: rgba(255,255,255,0.08); color: var(--text-muted); font-size: 11px; padding: 4px 10px; border-radius: 20px; font-weight: 600;">Inactive</div>
           </div>
           <div id="dash-plan" style="font-size: 20px; font-weight: 700; margin-bottom: 4px;">No Plan Selected</div>
-          <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px;">Renews on May 18, 2026</div>
-          <button class="btn-outline" style="width: 100%; padding: 10px; font-size: 13px;">Manage Subscription</button>
+          <div id="dash-plan-price" style="font-size: 13px; color: var(--lavender); margin-bottom: 8px;">Choose a plan to begin</div>
+          <div id="dash-plan-renewal" style="font-size: 13px; color: var(--text-muted); margin-bottom: 14px;">No renewal date</div>
+          <div id="dash-plan-benefits" style="font-size: 12px; color: var(--text-muted); line-height: 1.7; margin-bottom: 20px;">Your plan benefits will appear here after purchase.</div>
+          <div style="display: flex; gap: 10px;">
+            <button class="btn-outline" style="flex: 1; padding: 10px; font-size: 13px;" onclick="showPage('plans')">Manage</button>
+            <button class="btn-outline" style="flex: 1; padding: 10px; font-size: 13px;" onclick="refreshProfileFromDatabase()">Refresh</button>
+          </div>
         </div>
 
         <!-- Emergency / SOS -->
@@ -1191,7 +1097,9 @@
           <div style="width: 48px; height: 48px; background: rgba(251,113,133,0.2); color: var(--coral); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; margin: 0 auto 12px;">🆘</div>
           <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 8px;">Need urgent help?</h3>
           <p style="font-size: 13px; color: rgba(255,255,255,0.7); margin-bottom: 16px;">We are here for you 24/7. Don't hesitate to reach out.</p>
-          <button style="background: var(--coral); color: white; border: none; padding: 12px 20px; border-radius: 50px; font-size: 13px; font-weight: 600; font-family: 'Sora', sans-serif; cursor: pointer; width: 100%;">Call Emergency Helpline</button>
+          <div style="background: rgba(251,113,133,0.1); border: 1px solid rgba(251,113,133,0.3); color: white; padding: 12px; border-radius: 12px; font-size: 14px; font-weight: 600;">
+            National Emergency: <span style="color: var(--coral);">112</span>
+          </div>
         </div>
 
       </div>
@@ -1205,16 +1113,26 @@
     <img src="EMOT CARE.png" alt="EMOT CARE Logo" style="height: 48px; border-radius: 8px; object-fit: contain;">
   </div>
   <div class="footer-logo">EMOT<span>CARE</span></div>
-  <div style="color:var(--text-muted);font-style:italic;font-size:13px;margin-bottom:16px">"Support for every feeling"</div>
+  <div style="color:var(--text-muted);font-style:italic;font-size:13px;margin-bottom:24px">"Support for every feeling"</div>
+  <div class="footer-contact" style="display: flex; gap: 24px; flex-wrap: wrap; justify-content: center; margin-bottom: 24px; font-size: 13px; color: var(--text-muted);">
+    <div style="display: flex; align-items: center; gap: 8px;">
+      <span style="font-size: 16px;">📧</span> emotcare@gmail.com
+    </div>
+    <div style="display: flex; align-items: center; gap: 8px;">
+      <span style="font-size: 16px;">💬</span> WhatsApp: +91 7789922409
+    </div>
+    <div style="display: flex; align-items: center; gap: 8px;">
+      <span style="font-size: 16px;">🆘</span> 24/7 Helpline: +91 6371465987
+    </div>
+  </div>
   <div class="footer-links">
     <a onclick="showPage('home')">Home</a>
     <a onclick="showPage('plans')">Plans</a>
     <a onclick="showPage('about')">About</a>
-    <a onclick="showPage('contact')">Contact</a>
     <a onclick="showPage('legal')">Privacy</a>
     <a onclick="showPage('legal')">Terms</a>
   </div>
-  <p style="margin-top:16px">© 2025 EMOT CARE · Not a licensed insurance product · Emotional support platform for students & youth</p>
+  <p style="margin-top:16px">© 2026 EMOT CARE · Not a licensed insurance product · Emotional support platform for students & youth</p>
 </footer>
 
 
@@ -1233,21 +1151,22 @@
     document.getElementById('pay-plan-name').textContent = planName;
     document.getElementById('pay-plan-price').textContent = price;
     document.getElementById('pay-sub').textContent = price;
-    const gst = Math.round(parseInt(price) * 0.18);
-    const total = parseInt(price) + gst;
-    document.getElementById('pay-gst').textContent = gst;
+    const total = parseInt(price);
     document.getElementById('pay-total').textContent = total;
     document.getElementById('pay-btn-total').textContent = total;
     document.getElementById('payment-form-view').style.display = '';
-    document.getElementById('payment-success-view').style.display = 'none';
+    const successView = document.getElementById('payment-success-view');
+    if (successView) successView.style.display = 'none';
     showPage('payment');
   }
 
   function showSuccess() {
     document.getElementById('payment-form-view').style.display = 'none';
-    document.getElementById('payment-success-view').style.display = 'block';
+    const successView = document.getElementById('payment-success-view');
+    if (successView) successView.style.display = 'block';
     window.scrollTo({top: 0, behavior: 'smooth'});
   }
+  window.showSuccess = showSuccess;
 
   function selectPay(el) {
     document.querySelectorAll('.pay-option').forEach(o => o.classList.remove('selected'));
