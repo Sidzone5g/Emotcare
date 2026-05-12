@@ -1,5 +1,13 @@
 {
+  "scripts": {
+    "start": "node backend/server.js",
+    "test": "node --check index.js && node --check backend/server.js"
+  },
   "dependencies": {
+    "@supabase/supabase-js": "^2.105.1",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
     "firebase": "^12.12.0"
   }
 }
